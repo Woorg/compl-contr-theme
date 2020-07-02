@@ -1,40 +1,86 @@
 <?php
-/**
- * The template for displaying all single posts
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
- *
- * @package compl-contr
- */
 
-get_header();
+/* Template Name: Услуги
+*  Template Post Type: services
+*/
+
 ?>
 
-	<main id="primary" class="site-main">
+<?php get_header(); ?>
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
+<main class="main">
+  <div class="main__top">
+      <div class="main__container container flex">
+          <h1 class="main__title title"><?php the_title(); ?></h1>
+          <div class="main__breadcrumbs breadcrumbs">
+              <?php
+                  if ( function_exists('yoast_breadcrumb') ) {
+                    yoast_breadcrumb();
+                  }
+              ?>
+          </div>
+      </div>
+  </div>
 
-			get_template_part( 'template-parts/content', get_post_type() );
+  <div class="main__body main__body_testing wysiwyg container">
 
-			the_post_navigation(
-				array(
-					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'compl-contr' ) . '</span> <span class="nav-title">%title</span>',
-					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'compl-contr' ) . '</span> <span class="nav-title">%title</span>',
-				)
-			);
+  <?php
+  	if ( have_posts() ) { the_post();
+      the_content();
+  	}
+  ?>
 
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
+  </div>
 
-		endwhile; // End of the loop.
-		?>
+  <div class="main__bottom">
+    <div id="cta-form" class="cta-form">
+      <div class="cta-form__container container flex">
+        <h2 class="cta-form__title">Заинтересованы в услуге? Напишите нам!</h2>
+        <?= do_shortcode('[contact-form-7 id="117" html_class="cta-form__form form flex" title="Услуга"]') ?>
+      </div>
+    </div>
 
-	</main><!-- #main -->
+    <div class="examples">
+      <div class="examples__container container">
+        <h2 class="examples__title title_regular">Примеры проектов</h2>
 
-<?php
-get_sidebar();
-get_footer();
+        <?php
+          $args = array(
+            'post_type'      => 'post',
+            'cat'            => 7,
+            'posts_per_page' => 6,
+            'order'          => 'DESC',
+            'paged'          => $page,
+          );
+
+          $q = new WP_Query($args);
+
+        ?>
+        <?php if ($q->have_posts()) : ?>
+        <ul id="ajax-posts" class="examples__list flex">
+          <?php while ($q->have_posts()) : $q->the_post(); ?>
+          <li class="examples__item">
+            <div class="examples__item-w flex">
+              <img data-src="<?php echo get_the_post_thumbnail_url($post->ID, 'full' ); ?>" alt="" class="examples__image lazy">
+            </div>
+          </li>
+          <?php endwhile;   ?>
+        </ul>
+        <?php endif; wp_reset_postdata(); ?>
+
+        <div class="examples__more-w flex">
+          <button id="more_posts" class="examples__more button">Больше проектов</button>
+        </div>
+
+
+
+      </div>
+    </div>
+
+  </div>
+
+
+
+</main>
+
+<?php get_footer(); ?>

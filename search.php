@@ -10,20 +10,28 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
 
-		<?php if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<h1 class="page-title">
-					<?php
+<main class="main">
+  <div class="main__top">
+      <div class="main__container container flex">
+      	<?php if ( have_posts() ) : ?>
+          <h1 class="main__title title"><?php
 					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'compl-contr' ), '<span>' . get_search_query() . '</span>' );
-					?>
-				</h1>
-			</header><!-- .page-header -->
+					printf( esc_html__( 'Результаты для: %s', 'compl-contr' ), '<span>' . get_search_query() . '</span>' );
+					?></h1>
+          <div class="main__breadcrumbs breadcrumbs">
+              <?php
+                  if ( function_exists('yoast_breadcrumb') ) {
+                    yoast_breadcrumb();
+                  }
+              ?>
+          </div>
+      </div>
+  </div>
 
-			<?php
+  <div class="main__body main__body_search container">
+
+		<?php
 			/* Start the Loop */
 			while ( have_posts() ) :
 				the_post();
@@ -46,8 +54,9 @@ get_header();
 		endif;
 		?>
 
-	</main><!-- #main -->
+  </div>
 
-<?php
-get_sidebar();
-get_footer();
+
+</main>
+
+<?php get_footer(); ?>

@@ -7,54 +7,29 @@
  * @package compl-contr
  */
 
-get_header();
-?>
+get_header(); ?>
 
-	<main id="primary" class="site-main">
+<main class="main">
+  <div class="main__top">
+      <div class="main__container container flex">
+          <h1 class="main__title title"><?php esc_html_e( 'К сожалению! Страница не может быть найдена.', 'compl-contr' ); ?></h1>
+          <div class="main__breadcrumbs breadcrumbs">
+              <?php
+                  if ( function_exists('yoast_breadcrumb') ) {
+                    yoast_breadcrumb();
+                  }
+              ?>
+          </div>
+      </div>
+  </div>
 
-		<section class="error-404 not-found">
-			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'compl-contr' ); ?></h1>
-			</header><!-- .page-header -->
+  <div class="main__body main__body_search container">
 
-			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'compl-contr' ); ?></p>
+	<?php get_search_form(); ?>
 
-					<?php
-					get_search_form();
+  </div>
 
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
 
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'compl-contr' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories(
-								array(
-									'orderby'    => 'count',
-									'order'      => 'DESC',
-									'show_count' => 1,
-									'title_li'   => '',
-									'number'     => 10,
-								)
-							);
-							?>
-						</ul>
-					</div><!-- .widget -->
+</main>
 
-					<?php
-					/* translators: %1$s: smiley */
-					$compl_contr_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'compl-contr' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$compl_contr_archive_content" );
-
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-			</div><!-- .page-content -->
-		</section><!-- .error-404 -->
-
-	</main><!-- #main -->
-
-<?php
-get_footer();
+<?php get_footer(); ?>

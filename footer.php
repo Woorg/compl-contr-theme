@@ -13,7 +13,7 @@
 
 <div class="page__bottom">
   <footer class="footer">
-    <div class="footer__top">
+    <div id="contacts" class="footer__top">
       <div class="footer__container container flex">
         <div class="footer__contacts contacts contacts_theme_second flex">
         <?php $phone = get_field('phone', 'option'); ?>
@@ -115,7 +115,6 @@
 
 
 <?php wp_footer(); ?>
-
 
 
   </body>

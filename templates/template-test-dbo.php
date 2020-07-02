@@ -36,19 +36,7 @@
     <div id="cta-form" class="cta-form">
       <div class="cta-form__container container flex">
         <h2 class="cta-form__title">Заинтересованы в услуге? Напишите нам!</h2>
-        <form action="" class="cta-form__form form flex" method="post">
-          <div class="cta-form__form-field form__field">
-              <svg class="form__field-icon" width="18px" height="18px">
-                <use xlink:href="#phone-fill"></use></svg>
-              <input type="text" class="form__text" value="" placeholder="Имя">
-          </div>
-          <div class="cta-form__form-field form__field">
-              <svg class="form__field-icon" width="19px" height="19px">
-                <use xlink:href="#person-icon"></use></svg>
-              <input type="text" class="form__text" value="" placeholder="Номер телефона">
-          </div>
-          <input type="submit" class="cta-form__form-submit form__submit button" value="Отправить">
-        </form>
+        <?= do_shortcode('[contact-form-7 id="117" html_class="cta-form__form form flex" title="Услуга"]') ?>
       </div>
     </div>
 

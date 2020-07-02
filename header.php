@@ -403,8 +403,17 @@
 
           </nav>
 
-          <div class="search header__search"><a class="search__link" href="#">Поиск</a>
+          <!-- <div class="search header__search"> -->
+            <!-- <a class="search__link" href="<?= get_search_link(); ?>">Поиск</a> -->
+          <!-- </div> -->
+
+          <div class="header__search search">
+            <form action="<?php echo home_url( '/' ) ?>" class="search__form flex" method="get" role="search" id="searchform">
+              <input type="text" class="search__input" id="s" name="s" value="<?php echo get_search_query() ?>" placeholder="Поиск">
+              <input type="submit" class="search__submit" id="searchsubmit" name="найти">
+            </form>
           </div>
+
         </div>
       </header>
 

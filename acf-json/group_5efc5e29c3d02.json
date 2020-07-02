@@ -3,6 +3,25 @@
     "title": "Блок: ЭТАПЫ",
     "fields": [
         {
+            "key": "field_5efd023795039",
+            "label": "Стиль 2",
+            "name": "style_second",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_5efc6029f3458",
             "label": "Заголовок",
             "name": "title",
@@ -79,5 +98,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1593598059
+    "modified": 1593639646
 }

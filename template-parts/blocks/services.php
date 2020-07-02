@@ -1,4 +1,4 @@
-<section class="services">
+<section id="services" class="services">
   <div class="services__container container">
     <h2 class="services__title title title_regular"><?php the_field( 'заголовок' ); ?></h2>
 
